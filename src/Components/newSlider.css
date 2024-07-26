@@ -37,7 +37,7 @@
   
   .slider.default::-webkit-slider-thumb {
     background: var(--thumb-color);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1); */
   }
   
   .slider.hover::-webkit-slider-thumb {
@@ -82,4 +82,62 @@
   .container{
     margin: auto;
     width: 50%;
+    border: 2px dotted gray;
+    padding: 10px 20px;
+    /* border-radius: 20px; */
   }
+
+  .center{
+    text-align: center;
+    
+  }
+
+  .tooltip{
+    background: #000;
+    width: 10px;
+    color: aliceblue;
+  }
+
+  /* newSlider.css */
+/* .slider-wrapper {
+  position: relative;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.tooltip {
+  position: absolute;
+  top: -35px; 
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 10px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  
+} */
+
+.slider-wrapper {
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  top: -30px; /* Adjust as needed */
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+

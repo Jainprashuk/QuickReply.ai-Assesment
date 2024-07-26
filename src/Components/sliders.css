@@ -1,0 +1,87 @@
+/* src/components/sliders.css */
+.sliders-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.slider-section {
+  margin-bottom: 20px;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: #ddd;
+  border-radius: 10px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--thumb-size, 20px);
+  height: var(--thumb-size, 20px);
+  background: var(--thumb-color, blue);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Size classes */
+.sm .slider {
+  height: 4px;
+}
+
+.md .slider {
+  height: 8px;
+}
+
+.lg .slider {
+  height: 12px;
+}
+
+.dot-size-controls button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+/* src/components/sliders.css */
+.slider {
+  width: var(--slider-size);
+  /* Other common styles for slider */
+}
+
+/* Default state */
+.slider.default::-webkit-slider-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  background-color: var(--thumb-color);
+  cursor: pointer;
+}
+
+/* Hover state */
+.slider.hover::-webkit-slider-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  background-color: var(--thumb-color);
+  cursor: pointer;
+  outline: 2px solid rgb(18, 216, 4);
+  outline-offset: 2px;
+}
+
+/* Focus state */
+.slider.focus::-webkit-slider-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  background-color: var(--thumb-color);
+  cursor: pointer;
+  outline: 2px solid blue;
+  outline-offset: 2px;
+}

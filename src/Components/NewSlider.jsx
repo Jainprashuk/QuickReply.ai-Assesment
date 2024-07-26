@@ -9,7 +9,7 @@ const handleSizes = {
 
 const NewSlider = ({ type, subtype, steps, handleSize, backgroundColor, onChange }) => {
   const [value, setValue] = useState(subtype === 'Range' ? [20, 80] : 0);
-  const [tooltipVisible, setTooltipVisible] = useState({ 0: false, 1: false });
+  const [hoverIndex, setHoverIndex] = useState(null);
 
   const handleChange = (event, index) => {
     const newValue = event.target.value;
@@ -25,26 +25,32 @@ const NewSlider = ({ type, subtype, steps, handleSize, backgroundColor, onChange
   };
 
   const handleMouseOver = (index) => {
-    setTooltipVisible((prev) => ({ ...prev, [index]: true }));
+    setHoverIndex(index);
   };
 
-  const handleMouseOut = (index) => {
-    setTooltipVisible((prev) => ({ ...prev, [index]: false }));
+  const handleMouseOut = () => {
+    setHoverIndex(null);
   };
 
-  const getSliderClass = (state) => `slider ${state}`;
+  const getSliderClass = (state) => {
+    return `slider ${state}`;
+  };
 
-  const getSliderStyle = () => ({
-    '--thumb-size': `${handleSizes[handleSize]}px`,
-    '--thumb-color': backgroundColor,
-    '--thumb-color-hover': `${backgroundColor}80`, // Add transparency for hover
-    '--thumb-color-active': `${backgroundColor}BF`, // Add transparency for active
-  });
+  const getSliderStyle = () => {
+    return {
+      '--thumb-size': `${handleSizes[handleSize]}px`,
+      '--thumb-color': backgroundColor,
+      '--thumb-color-hover': `${backgroundColor}80`, // Add transparency for hover
+      '--thumb-color-active': `${backgroundColor}BF`, // Add transparency for active
+    };
+  };
 
-  const getTooltipPositionStyle = (value) => ({
-    left: `${value}%`,
-    transform: 'translateX(-50%)',
-  });
+  const getTooltipPositionStyle = (value) => {
+    return {
+      left: `${value}%`,
+      transform: `translateX(-50%)`,
+    };
+  };
 
   return (
     <div className="container new-slider-container">
@@ -53,12 +59,6 @@ const NewSlider = ({ type, subtype, steps, handleSize, backgroundColor, onChange
         <div className="slider-wrapper">
           {subtype === 'Range' ? (
             <>
-              <div
-                className={`tooltip ${tooltipVisible[0] ? 'visible' : ''}`}
-                style={getTooltipPositionStyle(value[0])}
-              >
-                {value[0]}
-              </div>
               <input
                 type="range"
                 min="0"
@@ -66,19 +66,12 @@ const NewSlider = ({ type, subtype, steps, handleSize, backgroundColor, onChange
                 step={type === 'Discreet' ? steps : 1}
                 value={value[0]}
                 onChange={(event) => handleChange(event, 0)}
+                onMouseOver={() => handleMouseOver(0)}
+                onMouseOut={handleMouseOut}
                 className={getSliderClass('default')}
                 style={getSliderStyle()}
-                onMouseOver={() => handleMouseOver(0)}
-                onMouseOut={() => handleMouseOut(0)}
-                onMouseDown={() => handleMouseOver(0)}
-                onMouseUp={() => handleMouseOut(0)}
               />
-              <div
-                className={`tooltip ${tooltipVisible[1] ? 'visible' : ''}`}
-                style={getTooltipPositionStyle(value[1])}
-              >
-                {value[1]}
-              </div>
+              <div className={`tooltip ${hoverIndex === 0 ? 'visible' : ''}`} style={getTooltipPositionStyle(value[0])}>{value[0]}</div>
               <input
                 type="range"
                 min="0"
@@ -86,23 +79,16 @@ const NewSlider = ({ type, subtype, steps, handleSize, backgroundColor, onChange
                 step={type === 'Discreet' ? steps : 1}
                 value={value[1]}
                 onChange={(event) => handleChange(event, 1)}
+                onMouseOver={() => handleMouseOver(1)}
+                onMouseOut={handleMouseOut}
                 className={getSliderClass('default')}
                 style={getSliderStyle()}
-                onMouseOver={() => handleMouseOver(1)}
-                onMouseOut={() => handleMouseOut(1)}
-                onMouseDown={() => handleMouseOver(1)}
-                onMouseUp={() => handleMouseOut(1)}
               />
+              <div className={`tooltip ${hoverIndex === 1 ? 'visible' : ''}`} style={getTooltipPositionStyle(value[1])}>{value[1]}</div>
               <p className="center">Range: {value[0]} - {value[1]}</p>
             </>
           ) : (
             <>
-              <div
-                className={`tooltip ${tooltipVisible[0] ? 'visible' : ''}`}
-                style={getTooltipPositionStyle(value)}
-              >
-                {value}
-              </div>
               <input
                 type="range"
                 min="0"
@@ -110,13 +96,12 @@ const NewSlider = ({ type, subtype, steps, handleSize, backgroundColor, onChange
                 step={type === 'Discreet' ? steps : 1}
                 value={value}
                 onChange={handleChange}
+                onMouseOver={() => handleMouseOver(0)}
+                onMouseOut={handleMouseOut}
                 className={getSliderClass('default')}
                 style={getSliderStyle()}
-                onMouseOver={() => handleMouseOver(0)}
-                onMouseOut={() => handleMouseOut(0)}
-                onMouseDown={() => handleMouseOver(0)}
-                onMouseUp={() => handleMouseOut(0)}
               />
+              <div className={`tooltip ${hoverIndex === 0 ? 'visible' : ''}`} style={getTooltipPositionStyle(value)}>{value}</div>
               <p className="center">Value: {value}</p>
             </>
           )}

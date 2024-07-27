@@ -41,17 +41,17 @@ In Storybook, the Slider component can be configured using the following control
 ## Deployed Links
 
 - **Github**: [https://github.com/Jainprashuk/QuickReply.ai-Assesment](https://github.com/Jainprashuk/QuickReply.ai-Assesment)
-- **Storybook**: [https://66a3739ab87337a6b633ff25-aqrrehxfwq.chromatic.com/?path=/story/example-newslider--continuous-single](https://66a3739ab87337a6b633ff25-aqrrehxfwq.chromatic.com/?path=/story/example-newslider--continuous-single)
+- **Storybook chromatic**: [https://66a3739ab87337a6b633ff25-aqrrehxfwq.chromatic.com/?path=/story/example-newslider--continuous-single](https://66a3739ab87337a6b633ff25-aqrrehxfwq.chromatic.com/?path=/story/example-newslider--continuous-single)
 
 ## ScreenShots Of Projects
-![Screenshot 1](./ScreenShots/Screenshot%20(178).png)
-*Home Page*
-![Screenshot 2](./ScreenShots/Screenshot%20(179).png)
-*Loading Page*
-![Screenshot 3](./ScreenShots/Screenshot%20(180).png)
-*Main pa6e*
-![Screenshot 3](./ScreenShots/Screenshot%20(181).png)
-*Responsive design for mobile screen*
+![Screenshot 1](./screenshots/one.png)
+*Continious Single*
+![Screenshot 2](./screenshots/two.png)
+*Continious range*
+![Screenshot 3](./screenshots/three.png)
+*discreet Single*
+![Screenshot 3](./screenshots/four.png)
+*discreet range*
 
 
 
